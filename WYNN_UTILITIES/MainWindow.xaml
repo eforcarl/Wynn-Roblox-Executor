@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:WYNNUTILITIES"
         xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit" x:Class="WYNNUTILITIES.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="351" Width="601" WindowStyle="None" ResizeMode="NoResize">
+        Title="Wynn Executor" Height="351" Width="601" WindowStyle="None" ResizeMode="NoResize" Loaded="Window_Loaded">
     <Window.Background>
-        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-            <GradientStop Color="#FF00CAFF" Offset="0"/>
-            <GradientStop Color="#FF0800FF" Offset="1"/>
-            <GradientStop Color="#FF006DFF" Offset="0.51"/>
+        <LinearGradientBrush x:Name="lienarbursh" EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop x:Name="grad1" Color="#FF00CAFF" Offset="0"/>
+            <GradientStop x:Name="grad2" Color="#FF0800FF" Offset="1"/>
+            <GradientStop x:Name="grad3" Color="#FF006DFF" Offset="0.51"/>
         </LinearGradientBrush>
     </Window.Background>
     <Grid x:Name="MainGrid" Margin="1,1,1,1">
@@ -59,20 +59,24 @@
 
         </Grid>
 
-        <TextBlock HorizontalAlignment="Left" Margin="490,277,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" FontWeight="Bold" FontSize="8" RenderTransformOrigin="0.512,0.329"><Run Text="NOTE: MUST NOT HAVE ROBLOX OPENED BEFORE TURNING MULTI-ROBLOX ON"/><LineBreak/><Run/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="491,284,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" FontWeight="Bold" FontSize="8" RenderTransformOrigin="0.512,0.329"><Run Text="NOTE: MUST NOT HAVE ROBLOX OPENED BEFORE TURNING MULTI-ROBLOX ON"/><LineBreak/><Run/></TextBlock>
 
         <Button x:Name="Minimize" HorizontalAlignment="Left" Margin="557,0,0,0" VerticalAlignment="Top" Height="20" Width="22" BorderBrush="White" Content="-" FontFamily="Impact" Click="Minimize_Click"/>
         <Button x:Name="ExitApplication" HorizontalAlignment="Left" Margin="578,0,0,0" VerticalAlignment="Top" Height="20" Width="21" BorderBrush="White" Content="X" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" FontStyle="Normal" Click="ExitApplication_Click"/>
         <Label x:Name="Title" Content="Wynn" HorizontalAlignment="Center" Margin="0,-3,0,0" VerticalAlignment="Top" Foreground="Gainsboro" FontWeight="Normal" FontFamily="Lucida Sans Unicode" MouseDown="Rectangle_MouseDown"/>
-        <Button x:Name="CREATEMUTEX" Content="Multi-Roblox" HorizontalAlignment="Left" Margin="490,252,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.515,6.786" Width="80" Click="MultiInstances_Clicked"/>
-        <CheckBox x:Name="TOPMOST" Content="Topmost" HorizontalAlignment="Left" Margin="492,229,0,0" VerticalAlignment="Top" Checked="TOPMOST_CheckChange" Unchecked="TOPMOST_CheckChange" FontSize="14" FontWeight="Bold"/>
-        <TextBox x:Name="Editor" HorizontalAlignment="Left" Margin="22,35,0,0" TextWrapping="Wrap" Text="while true do wait(1)&#x0a;print('eforcarl on top')&#x0a;end" VerticalAlignment="Top" Width="437" Height="302" Background="#598E8E8E" FontFamily="Lucida Console" FontSize="16" FontWeight="Normal" AcceptsReturn="True" VerticalScrollBarVisibility="Visible"/>
-        <Button Content="Execute" HorizontalAlignment="Left" Margin="492,60,0,0" VerticalAlignment="Top" Width="82" FontFamily="Arial" FontWeight="Bold" Background="White" Click="Button_Click"/>
-        <Button Content="Inject" HorizontalAlignment="Left" Margin="492,35,0,0" VerticalAlignment="Top" Width="82" FontFamily="Arial" FontWeight="Bold" Background="White" Click="Button_Click_1"/>
-        <TextBox x:Name="fpscap" HorizontalAlignment="Left" Margin="552,85,0,0" TextWrapping="NoWrap" Text="69" VerticalAlignment="Top" Width="22" Height="20" MaxLength="3" PreviewTextInput="TextBox_PreviewTextInput"/>
-        <Button x:Name="setfpscap" Content="Set FPS" HorizontalAlignment="Left" Margin="492,85,0,0" VerticalAlignment="Top" Width="55" Background="White" FontFamily="Arial" FontWeight="Bold" Height="20" Click="setfpscap_Click"/>
+        <Button x:Name="CREATEMUTEX" Content="Multi-Roblox" HorizontalAlignment="Left" Margin="491,260,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.515,6.786" Width="80" Click="MultiInstances_Clicked" Background="White" FontWeight="Bold"/>
+        <CheckBox x:Name="TOPMOST" Content="Topmost" HorizontalAlignment="Left" Margin="493,236,0,0" VerticalAlignment="Top" Checked="TOPMOST_CheckChange" Unchecked="TOPMOST_CheckChange" FontSize="14" FontWeight="Bold"/>
+        <Button Content="Execute" HorizontalAlignment="Left" Margin="493,60,0,0" VerticalAlignment="Top" Width="81" FontFamily="Arial" FontWeight="Bold" Background="White" Click="Button_Click"/>
+        <Button Content="Inject" HorizontalAlignment="Left" Margin="493,35,0,0" VerticalAlignment="Top" Width="81" FontFamily="Arial" FontWeight="Bold" Background="White" Click="Button_Click_1"/>
+        <Button x:Name="setfpscap" Content="Set FPS" HorizontalAlignment="Left" Margin="493,85,0,0" VerticalAlignment="Top" Width="54" Background="White" FontFamily="Arial" FontWeight="Bold" Height="20" Click="setfpscap_Click"/>
+        <Button x:Name="getkey" Content="Get Key" HorizontalAlignment="Left" Margin="493,110,0,0" VerticalAlignment="Top" Width="81" Background="White" FontWeight="Bold" Click="getkey_Click" FontFamily="Arial"/>
+        <TextBox x:Name="fpscap" HorizontalAlignment="Left" Margin="552,85,0,0" TextWrapping="NoWrap" Text="69" VerticalAlignment="Top" Width="22" Height="20" MaxLength="3" PreviewTextInput="TextBox_PreviewTextInput" BorderBrush="#FF707070" FontWeight="Bold"/>
+        <Button Content="Open File" HorizontalAlignment="Left" Margin="493,133,0,0" VerticalAlignment="Top" Width="81" Background="White" FontWeight="Bold" FontFamily="Arial" Click="OpenFile"/>
+        <WindowsFormsHost x:Name="scinwinform" Margin="22,44,146,20" Loaded="scinwinform_Loaded">
+            <scintilla:Scintilla xmlns:scintilla="clr-namespace:ScintillaNET;assembly=ScintillaNET" x:Name="texteditor" x:FieldModifier="public" Lexer="Lua" TextChanged="texteditor_TextChanged">
 
-
-
+            </scintilla:Scintilla>
+        </WindowsFormsHost>
+        <Button x:Name="ClearButton" Content="Clear" HorizontalAlignment="Left" Margin="493,156,0,0" VerticalAlignment="Top" Width="81" Height="18" FontFamily="Arial" FontWeight="Bold" Background="White" Click="ClearButton_Click"/>
     </Grid>
 </Window>
